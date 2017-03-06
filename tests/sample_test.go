@@ -3,6 +3,8 @@ package tests
 import (
 	"testing"
 
+	"os"
+
 	"github.com/marcusljx/dog"
 	"github.com/stretchr/testify/assert"
 )
@@ -44,6 +46,8 @@ var (
 		A: []string{"", "", "Yes"},
 		B: []int{1, 2, 3, 4},
 	}
+
+	db *dog.DB
 )
 
 func TestStoreStruct(t *testing.T) {
@@ -68,4 +72,5 @@ func TestGetStruct(t *testing.T) {
 	db.Set("s2B", s2B)
 
 	assert.NoError(t, db.Close())
+	assert.NoError(t, os.Remove(filepath))
 }
